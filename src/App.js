@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
+// import Radium from "radium"; //radium
+import styled from "styled-components"; //styled-components
 import Person from "./Person/Person";
 import Typing from "./Typing/Typing";
 import Char from "./Typing/Char.js";
@@ -11,6 +13,7 @@ class App extends Component {
     showPerson: true,
     char: [],
     footer: [{ a: "powerdBy:" }, { a: "Djordje" }, { a: "Lelek" }],
+    styleMeasure: "3px",
   };
 
   nameChangeHandler = (event) => {
@@ -50,6 +53,27 @@ class App extends Component {
     const style = {
       cursor: "pointer",
     };
+    const styleDelete = {
+      backgroundColor: "#a10000",
+      // ":hover": {
+      //   backgroundColor: "#e3551e",
+      // },
+    };
+    const styleAdd = {
+      backgroundColor: "#3f6b34",
+      // ":hover": {
+      //   backgroundColor: "#3bde12",
+      // },
+    };
+    const Button = styled.button`
+      background: transparent;
+      border-radius: ${this.state.styleMeasure}; //regular JS
+      border: 2px solid palevioletred;
+      color: palevioletred;
+      margin: 0 1em;
+      padding: 0.25em 1em;
+    `;
+
     let card = null;
     if (this.state.showPerson) {
       card = (
@@ -67,10 +91,20 @@ class App extends Component {
     return (
       <div className="App">
         <h1 style={style}>Card</h1>
-        <button type="button" onClick={this.deletePersonHandler}>
+        <Button
+          key="key1"
+          type="button"
+          onClick={this.deletePersonHandler}
+          // style={{ ...style, ...styleDelete }}
+        >
           delete
-        </button>
-        <button type="button" onClick={this.addDeletePersonHandler}>
+        </Button>
+        <button
+          key="key2"
+          type="button"
+          onClick={this.addDeletePersonHandler}
+          style={{ ...style, ...styleAdd }}
+        >
           add/delete
         </button>
         {card}

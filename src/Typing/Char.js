@@ -3,7 +3,7 @@ import "./Char.css";
 
 const Char = (props) => {
   return (
-    <div className="char" onClick={props.delete}>
+    <div className="char color" onClick={props.delete}>
       {props.c}
     </div>
   );
