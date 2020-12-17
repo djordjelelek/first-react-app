@@ -5,6 +5,7 @@ import styled from "styled-components"; //styled-components
 import Person from "./Person/Person";
 import Typing from "./Typing/Typing";
 import Char from "./Typing/Char.js";
+import ErrorBoundary from "./ErrorBoundaries/Error Boundaries";
 
 class App extends Component {
   state = {
@@ -108,7 +109,9 @@ class App extends Component {
           add/delete
         </button>
         {card}
-        <Typing tracking={this.trackingHandler} />
+        <ErrorBoundary>
+          <Typing tracking={this.trackingHandler} />
+        </ErrorBoundary>
         <br />
         {this.state.char.map((element, index) => {
           return (
